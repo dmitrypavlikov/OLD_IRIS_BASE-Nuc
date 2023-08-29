@@ -1,0 +1,12 @@
+\subsubsection usage Usage
+\verbatim
+<node name="image_converter" pkg="recognizer" type="image_converter">
+  <param name="maxb" type="int" value="255" />
+  <param name="maxg" type="int" value="255" />
+  <param name="maxr" type="int" value="255" />
+  <param name="minb" type="int" value="0" />
+  <param name="ming" type="int" value="0" />
+  <param name="minr" type="int" value="0" />
+</node>
+\endverbatim
+

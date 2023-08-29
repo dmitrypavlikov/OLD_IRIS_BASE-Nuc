@@ -1,0 +1,5 @@
+<launch>
+	<node pkg="arm_controll" type="arm_controll_test_node" name="arms" output="screen">
+		<param name="disable_torque" value="false"/>
+	</node>
+</launch>

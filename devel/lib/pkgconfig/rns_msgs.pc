@@ -1,0 +1,8 @@
+prefix=/home/joji/iris_ws/devel
+
+Name: rns_msgs
+Description: Description of rns_msgs
+Version: 1.0.4
+Cflags: -I/home/joji/iris_ws/devel/include
+Libs: -L/home/joji/iris_ws/devel/lib 
+Requires: nav_msgs sensor_msgs std_msgs

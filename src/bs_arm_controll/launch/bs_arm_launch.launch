@@ -1,0 +1,7 @@
+<launch>
+	<include file="$(find arm_controll)/launch/arms.launch"/>
+	<node pkg="bs_arm_controll" type="publishCmdInRad.py" name="pub_controll" output="screen"/>
+	<node pkg="bs_arm_controll" type="readCurPoseInRad.py" name="read_controll" output="screen"/>
+	<node pkg="bs_arm_controll" type="mainToPointNode.py" name="bs_controll" output="screen"/>
+	<node pkg="bs_arm_controll" type="welcomeScript.py" name="wellcome" output="screen"/>
+</launch>
