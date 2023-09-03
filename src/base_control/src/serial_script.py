@@ -13,6 +13,9 @@ class SerialControl():
 	def __init__(self):
 		self.ser = serial.Serial('/dev/ttyUSB0', 115200 ,timeout=0.1)
 		self.previous_cmd_time = 0
+		self.pres_vel = Twist()
+		self.pres_vel_pub = rospy.Publisher('pres_vel', Twist, queue_size=1)
+
 		#self.line = []
 		#self.jointstate = JointState()
 		#self.num_of_wheels = 2
@@ -28,7 +31,14 @@ class SerialControl():
 		self.sub_cmd = rospy.Subscriber("cmd_vel", Twist, self.cmd_cb)
         #self.js_pub = rospy.Publisher('joint_state', JointState, queue_size=1)
 
-		#def read(self):
+	def read(self):
+		buf = str(self.ser.readline())
+		print(buf)
+		buf = buf.split(',')
+		if buf[0] == 'pres_vel':
+			self.pres_vel.linear.x = buf[1]
+			self.pres_vel.angular.z = buf[2]
+			self.pres_vel_pub.publish(self.pres_vel)
 
 	def cmd_cb(self, data):
 		if(float(time() - self.previous_cmd_time) > 0.12):
@@ -40,4 +50,7 @@ if __name__ == '__main__':
 	rospy.init_node('serial_controller')
 	controller = SerialControl()
 	while not rospy.is_shutdown():
-		pass
+		try:
+			controller.read()
+		except Exception as e:
+			print(e)
