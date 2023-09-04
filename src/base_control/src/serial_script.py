@@ -36,8 +36,8 @@ class SerialControl():
 		print(buf)
 		buf = buf.split(',')
 		if buf[0] == 'pres_vel':
-			self.pres_vel.linear.x = buf[1]
-			self.pres_vel.angular.z = buf[2]
+			self.pres_vel.linear.x = float(buf[1])
+			self.pres_vel.angular.z = float(buf[2])
 			self.pres_vel_pub.publish(self.pres_vel)
 
 	def cmd_cb(self, data):
@@ -49,8 +49,5 @@ class SerialControl():
 if __name__ == '__main__':
 	rospy.init_node('serial_controller')
 	controller = SerialControl()
-	while not rospy.is_shutdown():
-		try:
-			controller.read()
-		except Exception as e:
-			print(e)
+	while not rospy.is_shutdown():		
+		controller.read()
