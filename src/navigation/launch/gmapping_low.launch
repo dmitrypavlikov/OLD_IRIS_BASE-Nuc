@@ -1,6 +1,6 @@
 <launch>
   <!-- launch to start gmapping to build map from scans -->
-	<arg name="scan" default="scan" />
+	<arg name="scan" default="rescan" />
 	<arg name="set_base_frame" default="base_link"/>
   	<arg name="set_odom_frame" default="odom"/>
   	<arg name="set_map_frame"  default="map"/>
