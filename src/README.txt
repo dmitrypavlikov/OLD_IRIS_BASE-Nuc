@@ -24,14 +24,15 @@ How to launch gmapping now?..
 
 0. sudo chmod 777 /dev/ttyUSB0
 0. sudo chmod 777 /dev/ttyUSB1
-1. roscore
-2. roslaunch base_control base_control.launch
-3. roslaunch hls_lfcd_lds_driver hlds_laser.launch
-4. rosrun hokuyo_node rescan_script.py
-5. rosrun hokuyo_node transform.py
-6. roslaunch navigation gmapping_low.launch
-7. roslaunch navigation rviz.launch
-8. rosrun navigation teleop.py
+1. roslaunch base_control bringup.launch
+To build map:
+0. roslaunch navigation gmapping_low.launch
+To navigate:
+0. roslaunch navigation navigation_amcl scan:=rescan map_name:=Office_Correct
 
-#TODO Create bringup.launch
+0. roslaunch navigation rviz.launch
+0. rosrun navigation teleop.py
+
+#TODO Test navigation_amcl with new map (need to use initial pose of robot)
+#TODO Launch hands
 
