@@ -79,7 +79,7 @@ CATKIN_SKIP_TESTING:BOOL=OFF
 CATKIN_SYMLINK_INSTALL:BOOL=OFF
 
 //List of ';' separated packages to build
-CATKIN_WHITELIST_PACKAGES:STRING=rosserial_client
+CATKIN_WHITELIST_PACKAGES:STRING=
 
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
@@ -531,6 +531,12 @@ gtest_force_shared_crt:BOOL=OFF
 gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 
 //Value Computed by CMake
+hls_lfcd_lds_driver_BINARY_DIR:STATIC=/home/joji/iris_ws/build/hls_lfcd_lds_driver
+
+//Value Computed by CMake
+hls_lfcd_lds_driver_SOURCE_DIR:STATIC=/home/joji/iris_ws/src/hls_lfcd_lds_driver
+
+//Value Computed by CMake
 hokuyo_node_BINARY_DIR:STATIC=/home/joji/iris_ws/build/hokuyo_node
 
 //Value Computed by CMake
@@ -798,7 +804,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=21
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

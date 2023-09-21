@@ -1,0 +1,17 @@
+<launch>
+	<!-- base_control launch -->
+	<node pkg="base_control" type="serial_script.py" name="serial_controller">
+		<!-- TODO: <arg name="base_port" default="/dev/ttyUSB0"/> -->
+	</node>
+
+	<!-- lidar launch -->
+	<node pkg="hls_lfcd_lds_driver" type="hlds_laser_publisher" name="hlds_laser_publisher" output="screen">
+		<param name="port" value="/dev/ttyUSB1"/>
+		<param name="frame_id" value="laser"/>
+	</node>
+	<node pkg="hokuyo_node" type="transform.py" name="tf_broadcaster"/>
+	<node pkg="hokuyo_node" type="rescan_script.py" name="rescan_node"/>
+	
+
+
+</launch>

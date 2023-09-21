@@ -48,6 +48,6 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/base_control" TYPE PROGRAM FILES "/home/joji/iris_ws/src/base_control/src/serial_script.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/base_control" TYPE PROGRAM FILES "/home/joji/iris_ws/build/base_control/catkin_generated/installspace/serial_script.py")
 endif()
 

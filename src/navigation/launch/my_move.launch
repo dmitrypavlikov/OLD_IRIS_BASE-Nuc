@@ -1,8 +1,8 @@
 <launch>
   <!-- launch to start gmapping  -->
-        <arg name="scan" default="scan" />
+        <arg name="scan" default="rescan" />
 
-        <node name="map" type="map_server" pkg="map_server" output="screen" args="$(find navigation)/launch/my_map.yaml" required="true">
+        <node name="map" type="map_server" pkg="map_server" output="screen" args="$(find navigation)/launch/Office_Correct.yaml" required="true">
 	</node> 
 
         <include file="$(find navigation)/launch/move_base/move_base.xml">
