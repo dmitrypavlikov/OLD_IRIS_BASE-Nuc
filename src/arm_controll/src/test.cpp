@@ -26,7 +26,7 @@
 #define DXL_COUNT                       14
 #define DXL_FIRST_ID					7         
 #define BAUDRATE                        1000000
-#define DEVICENAME                      "/dev/ttyACM1"
+#define DEVICENAME                      "/dev/ttyACM0"
 
 #define PROTOCOL_VERSION                1.0 
 #define PERIOD_PROTOCOL 				20
@@ -63,7 +63,7 @@ bool dxl_init(){
   	else{
     		ROS_INFO_STREAM("Succeed to init: "<<BAUDRATE); 
   	}
-  	for (int cnt = DXL_FIRST_ID-1; cnt < DXL_COUNT; cnt++)
+		for (int cnt = DXL_FIRST_ID-1; cnt < DXL_COUNT; cnt++)
   	{
     		result = dxl_wb.ping(dxl_id[cnt], &model_number, &log);
     	if (result == false)

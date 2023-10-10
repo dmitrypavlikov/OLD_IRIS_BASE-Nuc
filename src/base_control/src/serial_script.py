@@ -38,16 +38,6 @@ class SerialControl():
  		#self.js_pub = rospy.Publisher('joint_state', JointState, queue_size=1)
 		self.sub_cmd = rospy.Subscriber("cmd_vel", Twist, self.cmd_cb)
        
-
-
-	def normalize_angle(self, angle):
-		while angle > pi:
-			angle -= 2.0 * pi
-		while angle < -pi:
-			angle += 2.0 * pi
-		return angle
-
-
 	def publish_odom(self, cur_x, cur_y, cur_theta, vx, vth):
 		quat = tf.transformations.quaternion_from_euler(0, 0, cur_theta)
 		current_time = rospy.Time.now()
@@ -81,7 +71,7 @@ class SerialControl():
 		if buf[0] == 'pos':
 			self.cur_x = float(buf[1])
 			self.cur_y = float(buf[2])
-			self.theta = self.normalize_angle(float(buf[3]))
+			self.theta = float(buf[3])
 			self.vel_x = float(buf[4])
 			self.vel_th = float(buf[5])
 			self.publish_odom(self.cur_x, self.cur_y, self.theta, self.vel_x, self.vel_th)

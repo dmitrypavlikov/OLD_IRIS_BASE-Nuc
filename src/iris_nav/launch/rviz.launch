@@ -1,0 +1,3 @@
+<launch>
+	<node name="gui" pkg="rviz" type="rviz" args="-d $(find iris_nav)/navi.rviz"/>
+</launch>
