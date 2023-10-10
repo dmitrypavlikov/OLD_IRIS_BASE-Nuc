@@ -25,7 +25,7 @@
 	<include file="$(find bs_arm_control)/launch/bs_arm_launch.launch"/> -->
 
 	<!-- navigation launch -->
-	<!-- <include file="$(find iris_nav)/launch/navigation.launch"/> -->
+	<include file="$(find iris_nav)/launch/navigation.launch"/>
 	
 	
 
