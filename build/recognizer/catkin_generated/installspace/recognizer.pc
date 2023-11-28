@@ -1,8 +1,0 @@
-prefix=/home/joji/iris_ws/install
-
-Name: recognizer
-Description: Description of recognizer
-Version: 0.0.0
-Cflags: -I/home/joji/iris_ws/install/include
-Libs: -L/home/joji/iris_ws/install/lib 
-Requires: 
