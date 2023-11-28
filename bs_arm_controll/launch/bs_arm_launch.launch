@@ -1,0 +1,23 @@
+<launch>
+	<!-- <arg name="hunt" default="false"/>
+	<arg name="welcome" default="false"/>
+	<arg name="gripper" default="false"/>	
+	-->
+	<include file="$(find arm_controll)/launch/arms.launch"/>
+	<node pkg="bs_arm_controll" type="publishCmdInRad.py" name="pub_controll" output="screen"/>
+	<node pkg="bs_arm_controll" type="readCurPoseInRad.py" name="read_controll" output="screen"/>
+	<node pkg="bs_arm_controll" type="mainToPointNode.py" name="bs_controll" output="screen"/>
+	<node pkg="bs_arm_controll" type="welcomeScript.py" name="wellcome" output="screen"/>
+	<node pkg="bs_arm_controll" type="head.py" name="hunt" output="screen"/>
+	<node pkg="bs_arm_controll" type="gripper.py" name="gripper" output="screen"/>
+	
+
+<!--
+	<arg name="hand_topic" default="/arm/welcome"/>
+	<node pkg="rostopic" type="rostopic" name="rostopic_pub_hand_node" output="screen" args="pub $(arg hand_topic) std_msgs/Bool 'data: $(arg welcome)'" />
+	<arg name="head_topic" default="/arm/cmd_hunting"/>
+	<node pkg="rostopic" type="rostopic" name="rostopic_pub_head_node" output="screen" args="pub $(arg head_topic) std_msgs/Bool 'data: $(arg hunt)'" />
+	<arg name="gripper_topic" default="/arm/cmd_gripper"/> 
+	<node pkg="rostopic" type="rostopic" name="rostopic_pub_gripper_node" args="pub $(arg gripper_topic) std_msgs/Bool 'data: $(arg gripper)'" />
+-->	
+</launch>

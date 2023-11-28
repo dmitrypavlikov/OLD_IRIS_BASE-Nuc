@@ -1,0 +1,3 @@
+<launch>
+  <node name="serial_controller" pkg="base_control" type="serial_script.py"/>
+</launch>

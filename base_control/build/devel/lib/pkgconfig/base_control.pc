@@ -1,0 +1,8 @@
+prefix=/home/joji/iris_ws/src/base_control/build/devel
+
+Name: base_control
+Description: Description of base_control
+Version: 0.0.1
+Cflags: 
+Libs: -L/home/joji/iris_ws/src/base_control/build/devel/lib 
+Requires: 
