@@ -1,5 +1,0 @@
-string from
-string to
-time stamp
----
-geometry_msgs/Pose pose
