@@ -1,0 +1,21 @@
+<launch>
+	<arg name="map_name" default="newest"/>
+
+	<!-- base_control launch -->
+	<node pkg="base_control" type="serial_script.py" name="serial_controller"/>
+
+	<!-- lidar launch -->
+        <include file="$(find rplidar_ros)/launch/iris_rplidar.launch"/>
+	
+	<!-- visualization launch --> 
+	<node name="gui" pkg="rviz" type="rviz" args="-d $(find iris_nav)/navi.rviz"/>
+
+	<!-- emotion launch -->
+        <include file="$(find bs_arm_controll)/launch/bs_arm_launch.launch"/>
+	
+        <!-- navigation launch -->
+	<include file="$(find iris_nav)/launch/navigation.launch">
+		<arg name="map_name" value="$(arg map_name)"/>
+        </include>
+	
+</launch>
