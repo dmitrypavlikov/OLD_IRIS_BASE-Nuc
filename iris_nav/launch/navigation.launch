@@ -4,7 +4,7 @@
 	<arg name="map_name" default="newest"/>	
 
 	<!-- launch to start gmapping  -->
-	<include file="$(find iris_nav)/launch/gmapping.launch" unless="$(arg use_amcl)"/>
+	<include file="$(find iris_nav)/launch/hector.launch" unless="$(arg use_amcl)"/>
 	<!-- <include file="$(find iris_nav)/params/move_base.xml"/> -->
 	<node pkg="iris_nav" type="move_base_controller.py" name="mb_con"/>
 
