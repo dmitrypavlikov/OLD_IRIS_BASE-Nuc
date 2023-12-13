@@ -1,44 +1,44 @@
-#For full documentation of the parameters in this file, and a list of all the
-#parameters available for DWAPlannerROS, please see
-#http://www.ros.org/wiki/dwa_local_planner
 DWAPlannerROS:
-  use_dwa: true
-  
-  acc_lim_th: 0.2
-  acc_lim_x: 0.2
-  acc_lim_y: 0
+   
+  acc_lim_th: 0.02
+  acc_lim_x: 0.0
+  acc_lim_y: 0.02
 
-  max_vel_x: 0.2
-  min_vel_x: -0.2
+  max_vel_x: 0.1
+  min_vel_x: 0.0
 
-  max_trans_vel: 0.2
-  min_trans_vel: -0.2
+  max_vel_y: 0.0
+  min_vel_y: 0.0
 
-  max_rot_vel: 0.2
-  min_rot_vel: -0.2
+  max_trans_vel: 0.1
+  min_trans_vel: 0.05
 
-  goal_distance_bias: 20
-  path_distance_bias: 20
+  max_rot_vel: 0.1
+  min_rot_vel: 0.05
+
+  goal_distance_bias: 20.0
+  path_distance_bias: 32.0
   occdist_scale: 0.02
 
-  stop_time_buffer: 0.3
+  stop_time_buffer: 0.2
   oscillation_reset_dist: 0.05
-  twirling_scale: 0.0
 
-  forward_point_distance: 0.325
+  forward_point_distance: 0.2
 
-  scaling_speed: 0.08
-  max_scaling_factor: 0.2
+  scaling_speed: 0.05
+  max_scaling_factor: 0.1
 
-  sim_time: 0.8
-  sim_granularity: 0.06
-  vx_samples: 15
+  sim_time: 2
+  sim_granularity: 0.025
+  sim_period: 0.2
+  vx_samples: 20
   vy_samples: 0
-  vth_samples: 20
+  vth_samples: 10
+  controller_frequency: 5.0
 
-  xy_goal_tolerance: 0.2
-  yaw_goal_tolerance: 0.15
-  latch_xy_goal_tolerance: true
+  xy_goal_tolerance: 0.1
+  yaw_goal_tolerance: 0.05
+  latch_xy_goal_tolerance: false
 
   rot_stopped_vel: 0
   trans_stopped_vel: 0
