@@ -1,15 +1,19 @@
 <launch>
 
 	<arg name="use_amcl" default="true"/>
-	<arg name="map_name" default="hector2"/>	
+	<arg name="map_name" default="hector2"/>
+	<arg name="use_costmap_cleaner"	default="true"/>
 
 	<!-- launch to start gmapping  -->
-	<include file="$(find iris_nav)/launch/hector.launch" unless="$(arg use_amcl)"/>
+	<!-- <include file="$(find iris_nav)/launch/hector.launch" unless="$(arg use_amcl)"/> -->
 	<!-- <include file="$(find iris_nav)/params/move_base.xml"/> -->
 	<!-- <node pkg="iris_nav" type="move_base_controller.py" name="mb_con"/> -->
 
 	<include file="$(find iris_nav)/launch/amcl.launch" if="$(arg use_amcl)">
 		<arg name="map_name" value="$(arg map_name)"/>
 	</include>
+
+	<!-- Costmap cleaner client launch -->
+	<node pkg="iris_nav" type="clean_costmap.py" name="clear_costmaps_client" if="$(arg use_costmap_cleaner)"/>
 
 </launch>
