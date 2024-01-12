@@ -78,7 +78,7 @@ class SerialControl():
 
 	def cmd_cb(self, data):
 		if(float(time() - self.previous_cmd_time) > 0.12):
-			string = str(data.linear.x)  + "," + str(data.angular.z) + "\n"
+			string = str(round(data.linear.x, 2))  + "," + str(round(data.angular.z, 2)) + "\n"
 			self.ser.write(string.encode())
 			self.previous_cmd_time = time()
 
