@@ -6,5 +6,5 @@ clear_costmap_recovery:
 
 rotate_recovery:
   #sim_granularity: 0.017
-  sim_granularity: 0.51
+  sim_granularity: 0.085 # 5 degrees
   frequency: 5.0

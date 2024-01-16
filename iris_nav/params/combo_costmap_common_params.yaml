@@ -1,0 +1,18 @@
+max_obstacle_height: 2.0
+obstacle_range: 0.5
+raytrace_range: 3.0
+
+inflation_radius: 0.4
+#cost_scaling_factor: 5.0 #10.0
+#footprint: [[-0.2, -0.25], [-0.2, 0.25], [0.1, 0.25],  [0.1, -0.25]]
+footprint: [[0.15, 0.25], [0.15, -0.25], [-0.15, -0.25], [-0.25, -0.1], [-0.25, 0.1], [-0.15, 0.25]]
+
+map_type: costmap
+origin_z: 0.0
+z_resolution: 0.2
+z_voxels: 2
+
+observation_sources: rescan depth
+rescan: {sensor_frame: laser, data_type: LaserScan, topic: rescan, expected_update_rate: 30}
+depth: {sensor_frame: camera_link, data_type: PointCloud2, topic: /camera/depth/points}
+
