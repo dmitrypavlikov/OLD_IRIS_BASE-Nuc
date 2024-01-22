@@ -24,9 +24,9 @@
 #include <dynamixel_workbench_toolbox/dynamixel_workbench.h>
 
 #define DXL_COUNT                       14
-#define DXL_FIRST_ID			7
+#define DXL_FIRST_ID					7
 #define BAUDRATE                        1000000
-#define DEVICENAME                      "/dev/ttyACM0"
+#define DEVICENAME                      "/dev/dxl"
 
 #define PROTOCOL_VERSION                1.0 
 #define PERIOD_PROTOCOL 				20
