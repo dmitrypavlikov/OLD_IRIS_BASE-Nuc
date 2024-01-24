@@ -8,10 +8,9 @@
 
     <!-- #Using dwa_local_planner and default trajectory planner"dwa_local_planner/DWAPlannerROS" 
     <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" /> -->
-    <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS" />
-
-    <rosparam file="$(find iris_nav)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find iris_nav)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS" />    
+    <rosparam file="$(find iris_nav)/params/costmap_common_params.yaml" command="load" ns="global_costmap" unless="$(arg use_astra)" />
+    <rosparam file="$(find iris_nav)/params/costmap_common_params.yaml" command="load" ns="local_costmap" unless="$(arg use_astra)" />
     <rosparam file="$(find iris_nav)/params/combo_costmap_common_params.yaml" command="load" ns="global_costmap" if="$(arg use_astra)"/>
     <rosparam file="$(find iris_nav)/params/combo_costmap_common_params.yaml" command="load" ns="local_costmap" if="$(arg use_astra)"/>
     <rosparam file="$(find iris_nav)/params/local_costmap_params.yaml" command="load" />

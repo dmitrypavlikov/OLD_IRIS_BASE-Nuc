@@ -1,23 +1,20 @@
 <launch>
-
-	<arg name="use_amcl" default="true"/>
 	<arg name="use_astra" default="false" />
 	<arg name="map_name" default="hector2"/>
 	<arg name="scan" default="rescan"/>
-	<arg name="use_costmap_cleaner"	default="true"/>
+	<arg name="use_costmap_cleaner"	default="false"/>
 
 
-	<include file="$(find iris_nav)/launch/amcl.launch" if="$(arg use_amcl)">
+	<include file="$(find iris_nav)/launch/amcl.launch">
 		<arg name="map_name" value="$(arg map_name)"/>
 	</include>
 
 	<include file="$(find iris_nav)/params/move_base.xml"> 
 		<arg name="scan" value="$(arg scan)"/>
+		<arg name="use_astra" value="$(arg use_astra)" />
 	</include>
 
 	<!-- Agressive Costmap_cleaner client launch -->
-	<node pkg="iris_nav" type="clean_costmap.py" name="clear_costmaps_client" if="$(arg use_costmap_cleaner)">
-		<arg name="use_astra" value="$(arg use_astra)" />
-	</node> 
+	<node pkg="iris_nav" type="clean_costmap.py" name="clear_costmaps_client" if="$(arg use_costmap_cleaner)" />
 
 </launch>
