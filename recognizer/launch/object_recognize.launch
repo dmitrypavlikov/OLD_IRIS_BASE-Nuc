@@ -2,15 +2,13 @@
 <include file="$(find astra_camera)/launch/astra.launch">
 </include>
 <node pkg="recognizer" type="simple_rec.py" name="recognizer">
-<param name="maxb"  value="182"/>
-<param name="maxg"  value="248"/>
-<param name="maxr"  value="169"/>
-<param name="minb"  value="169"/>
-<param name="ming"  value="145"/>
-<param name="minr"  value="95"/>	
+<param name="maxr"  value="210"/>
+<param name="maxg"  value="55"/>
+<param name="maxb"  value="55"/>
+<param name="minr"  value="70"/>
+<param name="ming"  value="5"/>
+<param name="minb"  value="5"/>
 </node>
-<include file="$(find hokuyo_node)/launch/laser.launch"/>
-<include file="$(find roboclaw_node)/launch/roboclaw.launch"/>
-<include file="$(find bs_arm_controll)/launch/bs_arm_launch.launch"/>
+
 <node pkg="recognizer" type="converter.py" name="converter_node"/>
 </launch>

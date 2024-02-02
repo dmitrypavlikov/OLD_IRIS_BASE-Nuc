@@ -95,6 +95,8 @@ generate_dynamic_reconfigure_options(
    cfg/CamConfig.cfg
  )
 
+# add_dependencies(image_converter ${PROJECT_NAME}_gencfg)
+
 ###################################
 ## catkin specific configuration ##
 ###################################

@@ -23,6 +23,7 @@ class image_converter:
 		self.bridge = CvBridge()
 		self.image_sub = rospy.Subscriber("/camera/rgb/image_raw",Image,self.callback)
 		self.srv = Server(CamConfig, self.read_param)
+		
 	def read_param(self, config, level):
 		try:
 			self.maxb = config["maxb"]
@@ -46,30 +47,32 @@ class image_converter:
 			print(e)
 		cv_image = cv2.GaussianBlur(cv_image,(5,5),0)
 		image_binary = self.binar(cv_image) 
-		# cv_image = cv2.cvtColor(cv_image, cv2.COLOR_BGR2HSV)
-		# cv_image = cv2.bitwise_and(cv_image,cv_image, mask = image_binary)
+		#cv_image = cv2.cvtColor(cv_image, cv2.COLOR_BGR2HSV)
+		#cv_image = cv2.bitwise_and(cv_image,cv_image, mask = image_binary)
 		center = self.find_object(image_binary)
 		if center:
 			x = int(center[0])
 			y = int(center[1])
 			r = int(center[2])
-			cv_image = cv2.rectangle(cv_image, (x + r/2, y - r), (x - r/2, y + r), (255,0,0), 2)
+			cv_image = cv2.rectangle(cv_image, (x + r, y - r), (x - r, y + r), (255,0,0), 2)
 			font                   = cv2.FONT_HERSHEY_SIMPLEX
-			bottomLeftCornerOfText = (x-r/2,y-r)
+			bottomLeftCornerOfText = (x-r/3,y-r)
 			fontScale              = 1
-			fontColor              = (255,255,255)
+			fontColor              = (0,0,255)
 			lineType               = 2
-			cv2.putText(cv_image,'cola', bottomLeftCornerOfText, font, fontScale,fontColor,lineType)
+			cv2.putText(cv_image,'cube', bottomLeftCornerOfText, font, fontScale,fontColor,lineType)
 		try:
-			self.image_pub.publish(self.bridge.cv2_to_imgmsg(cv_image, "bgr8"))
+			self.image_pub.publish(self.bridge.cv2_to_imgmsg(cv_image, "bgr8")) # (self.bridge.cv2_to_imgmsg(image_binary, "bgr8")) #
 		except CvBridgeError as e:
 			print(e)
+
 	def binar(self, image):
-		image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+		#image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV) # converted to HSV (?)
 		image = cv2.inRange(image, (self.minb, self.ming, self.minr), (self.maxb, self.maxg, self.maxr))
 		image = cv2.erode(image,None,iterations=2)
 		image = cv2.dilate(image,None,iterations=3)
 		return image
+
 	def find_object(self,image):
 		contours = cv2.findContours(image, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
 		contours = contours[1]
@@ -84,8 +87,9 @@ class image_converter:
 			self.pose_pub.publish(msg)
 			print center
 			return center
+
 def main(args):
-	rospy.init_node('image_converter', anonymous=True)
+	rospy.init_node('image_converter', anonymous=False)
 	ic = image_converter()
 	try:
 		rospy.spin()

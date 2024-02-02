@@ -1,3 +1,0 @@
-<launch>
- <node name="gui" pkg="rviz" type="rviz" args="-d $(find navigation)/navi.rviz"/>
-</launch>
