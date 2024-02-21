@@ -10,7 +10,7 @@
 
 	<node name="amcl" type="amcl" pkg="amcl" output="screen">
 
-	<param name="use_map_topic"  			value="true"/>
+	<param name="use_map_topic"  			value="false"/>
 	  
 	<param name="min_particles"             value="1000"/>
 	<param name="max_particles"             value="3000"/>
